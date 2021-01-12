@@ -15,9 +15,9 @@
 
 using namespace v8;
 
-void InitAll(Local<Object> exports) {
-	DeviceINQ::Init(exports);
-	BTSerialPortBinding::Init(exports);
+NAN_MODULE_INIT(InitAll) {
+    DeviceINQ::Init(target);
+    BTSerialPortBinding::Init(target);
 }
 
-NODE_MODULE(BluetoothSerialPort, InitAll)
+NAN_MODULE_WORKER_ENABLED(BluetoothSerialPort, InitAll)
